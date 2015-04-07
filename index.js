@@ -95,6 +95,18 @@ module.exports = function(selector) {
     if (nodes.hasClass(name)) nodes.removeClass(name)
     else nodes.addClass(name)
   }
+  
+  nodes.html = function(html) {
+    return nodes.each(function (node) {
+      node.innerHTML = html
+    })
+  }
+
+  nodes.text = function(text) {
+    return nodes.each(function (node) {
+      node.innerText = text
+    })
+  }
 
   if (nodes.length > 1) return nodes
 
@@ -106,6 +118,9 @@ module.exports = function(selector) {
   node.hasClass = nodes.hasClass
   node.addClass = nodes.addClass
   node.removeClass = nodes.removeClass
+  node.toggleClass = nodes.toggleClass
+  node.html = nodes.html
+  node.text = nodes.text
   node.length = 1
 
   return node
